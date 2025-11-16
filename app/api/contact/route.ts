@@ -115,7 +115,8 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true });
   } catch (e: any) {
-    console.error("Erreur envoi mail:", e?.message || e);
+    console.error("Erreur envoi mail:", e?.message || e);   
+    
     return NextResponse.json(
       { ok: false, error: "Échec d'envoi du mail." },
       { status: 500 }
