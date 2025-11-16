@@ -1,0 +1,79 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --grad: linear-gradient(135deg, theme(colors.accent2), theme(colors.accent)); }
+html { scroll-behavior:smooth; }
+body {
+  @apply bg-sky-50 text-ink;
+  background:
+    radial-gradient(1200px 800px at 80% -10%, rgba(14,165,233,.08), transparent 60%),
+    radial-gradient(1200px 800px at -10% 100%, rgba(34,211,238,.10), transparent 60%),
+    #f7fbff;
+}
+.container { @apply max-w-[1180px] mx-auto px-5; }
+.surface { @apply bg-white border border-sky-100 rounded-2xl shadow; }
+.btn { @apply inline-flex items-center gap-2 font-semibold rounded-2xl px-4 py-3 text-white shadow-ring2 bg-gradient-to-tr from-accent2 to-accent; }
+.link { @apply text-sky-700 hover:underline; }
+.navlink { @apply opacity-80 hover:opacity-100 font-semibold; }
+.kpi { @apply border border-dashed border-sky-200 rounded-xl p-3 bg-white; }
+.badge { @apply inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-semibold text-sky-800; }
+.hero-grid { @apply grid grid-cols-1 md:grid-cols-[1.15fr_.85fr] gap-7 items-center; }
+.header { @apply sticky top-0 z-50 bg-white/70 backdrop-blur border-b border-sky-100; }
+.footer { @apply bg-ink text-sky-100 mt-10; }
+.card-hover { @apply transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-ring; }
+.gallery-grid { @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4; }
+.filter-chip { @apply px-3 py-1.5 rounded-full border border-sky-200 bg-white text-sky-800 text-sm font-medium hover:shadow cursor-pointer; }
+.filter-chip-active { @apply bg-gradient-to-tr from-accent2 to-accent text-white border-transparent shadow-ring2; }
+.mobile-trigger { @apply md:hidden inline-flex items-center justify-center rounded-xl border border-sky-200 bg-white w-10 h-10; }
+.mobile-drawer { @apply fixed inset-0 z-[9999] bg-black/40; }
+.mobile-panel { @apply ml-auto h-full w-[80%] max-w-[360px] bg-white p-6 shadow-2xl border-l border-sky-100 overflow-y-auto; }
+.mobile-nav a { @apply block py-3 text-lg font-semibold border-b border-sky-100; }
+.safe-bottom{ padding-bottom: env(safe-area-inset-bottom); }
+
+
+/* ---------- Header logo sizing (responsive & future-proof) ---------- */
+.logo-wrap { display:inline-flex; align-items:center; }
+.logo-img { max-height: 90px; width:auto; height:auto; object-fit: contain; }
+@media (max-width: 768px){
+  .logo-img { max-height: 44px; }
+}
+
+/* Centered desktop nav */
+.nav-center { flex:1; display:none; justify-content:center; gap:1.4rem; }
+@media (min-width: 768px){
+  .nav-center { display:flex; }
+}
+
+/* Footer: light & sexy */
+.footer--light {
+  @apply bg-white mt-16;
+  background:
+    radial-gradient(800px 300px at 50% 0%, rgba(14,165,233,.08), transparent 60%),
+    radial-gradient(600px 200px at 10% 40%, rgba(34,211,238,.06), transparent 60%),
+    #ffffff;
+}
+.footer-card { @apply bg-white border border-sky-100 rounded-2xl shadow p-5; }
+.footer-chip { @apply inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-semibold text-sky-800; }
+.footer-links a { @apply text-sky-700 hover:underline; }
+.footer-top {
+  border-top-left-radius: 32px; border-top-right-radius: 32px;
+  box-shadow: 0 -10px 40px rgba(2,132,199,.08) inset;
+}
+
+
+@layer components {
+  /* Header logo sizing */
+  .logo-img { max-height: 56px; width: auto; height: auto; object-fit: contain; }
+  @media (max-width: 768px){ .logo-img { max-height: 44px; } }
+
+  /* Inputs */
+  .input { @apply w-full border border-sky-200 rounded-xl px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/40; }
+  textarea.input { @apply resize-y; }
+
+  /* Card/surface */
+  .surface { @apply bg-white border border-sky-100 rounded-2xl shadow-sm; }
+  .kpi { @apply rounded-2xl border border-sky-100 bg-sky-50 px-3 py-2 text-sky-800/90; }
+  .btn-lg { @apply btn px-5 py-3 text-base; }
+}
