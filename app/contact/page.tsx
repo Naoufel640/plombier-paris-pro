@@ -33,7 +33,7 @@ export default function ContactPage(){
 
             <div className="surface p-6">
               <h3 className="font-semibold text-lg">Adresse</h3>
-              <p className="text-sm">63 rue yves cremlin, 92100 Boulogne‑Billancourt</p>
+              <p className="text-sm">63 rue yves kermen, 92100 Boulogne‑Billancourt</p>
               <p className="text-xs text-sky-700/80 mt-1">Intervention à Paris & Île‑de‑France.</p>
             </div>
           </aside>

@@ -38,7 +38,7 @@ export default function Footer(){
           <div>
             <h4 className="text-sky-900 font-semibold mb-3">Coordonnées</h4>
             <ul className="space-y-2 text-sky-800/90 text-sm">
-              <li>📍 63 rue Yves Cremlin, 92100 Boulogne‑Billancourt</li>
+              <li>📍 63 rue Yves kermen, 92100 Boulogne‑Billancourt</li>
               <li>🕒 24h/24 – 7j/7</li>
               <li>📞 Intervention Paris & IDF</li>
             </ul>
