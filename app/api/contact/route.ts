@@ -210,24 +210,40 @@ export async function POST(request: Request) {
     </div>
   `;
 
+  // On n'ajoute une pièce jointe que si :
+  // - il y a bien un File
+  // - la taille > 0
+  // - et idéalement que c'est une image
   const attachments: any[] = [];
-  if (photo && typeof photo === "object") {
-    const buf = Buffer.from(await photo.arrayBuffer());
+  const hasRealPhoto =
+    photo &&
+    typeof photo === "object" &&
+    "size" in photo &&
+    (photo as any).size > 0 &&
+    (!!photo.type ? photo.type.startsWith("image/") : true);
+
+  if (hasRealPhoto) {
+    const buf = Buffer.from(await photo!.arrayBuffer());
     attachments.push({
-      filename: photo.name || "photo.jpg",
+      filename: photo!.name || "photo.jpg",
       content: buf,
-      contentType: photo.type || "image/jpeg",
+      contentType: photo!.type || "image/jpeg",
     });
   }
 
   try {
-    await transporter.sendMail({
+    const mailOptions: any = {
       to: SMTP_CONFIG.to,
       from: SMTP_CONFIG.from,
       subject: `Demande de contact – ${name} (${phone})`,
       html,
-      attachments,
-    });
+    };
+
+    if (attachments.length > 0) {
+      mailOptions.attachments = attachments;
+    }
+
+    await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ ok: true });
   } catch (e: any) {
